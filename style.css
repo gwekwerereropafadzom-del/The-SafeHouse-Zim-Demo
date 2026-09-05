@@ -1,3 +1,7 @@
+/* ==========================================================
+   THE SAFEHOUSE ZIM - PRODUCTION STYLESHEET
+   ========================================================== */
+
 /* --- 1. Global System Constants & Theme Reset --- */
 :root {
     --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
@@ -122,10 +126,10 @@ h1 { font-size: 1.8rem; font-weight: 700; letter-spacing: -0.5px; margin-bottom:
 h2 { font-size: 1.15rem; font-weight: 700; margin-bottom: 16px; color: var(--text-main); text-align: left; }
 .subtitle { font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; }
 
-/* --- 6. Direct Buttons / Resource Cards --- */
+/* --- 6. Direct Buttons / Resource & Social Layout Grid --- */
 .links-container { display: flex; flex-direction: column; gap: 14px; margin-bottom: 28px; }
 
-.resource-btn {
+.resource-btn, .social-card {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -135,11 +139,20 @@ h2 { font-size: 1.15rem; font-weight: 700; margin-bottom: 16px; color: var(--tex
     border-radius: 16px;
     border: 1px solid var(--border-color);
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 100%;
+}
+
+.social-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    text-align: left;
 }
 
 .btn-content { display: flex; flex-direction: column; text-align: left; gap: 6px; padding-right: 12px; }
-.btn-title { font-weight: 600; font-size: 1rem; color: var(--text-main); }
-.btn-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; }
+.btn-title, .social-card h3 { font-weight: 600; font-size: 1rem; color: var(--text-main); }
+.btn-desc, .social-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; }
+.social-handle { font-size: 0.8rem; color: var(--accent-glow); font-weight: 700; margin-top: -4px; }
 .btn-arrow { font-size: 1.1rem; color: var(--text-muted); transition: transform 0.2s ease, color 0.2s ease; }
 
 .resource-btn:hover {
@@ -148,6 +161,31 @@ h2 { font-size: 1.15rem; font-weight: 700; margin-bottom: 16px; color: var(--tex
     transform: translateY(-2px);
 }
 .resource-btn:hover .btn-arrow { transform: translateX(4px); color: var(--accent-glow); }
+
+/* --- Uniform Action Buttons inside Social Layout Cards --- */
+.social-link-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: var(--btn-bg);
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    transition: all 0.2s ease;
+    text-align: center;
+    margin-top: 6px;
+}
+
+.social-link-btn:hover {
+    background-color: rgba(129, 140, 248, 0.15);
+    border-color: var(--accent-glow);
+    color: var(--text-main);
+}
 
 /* --- 7. Frequently Asked Questions Accordions --- */
 .faq-section {
@@ -261,11 +299,12 @@ summary {
     border-radius: 18px;
     margin-bottom: 24px;
     text-align: center;
+    width: 100%;
 }
 
 .insta-label { font-size: 0.76rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; margin-bottom: 10px; }
 
-.insta-btn {
+.insta-btn, .join-btn {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -277,12 +316,21 @@ summary {
     padding: 12px 18px;
     border-radius: 12px;
     transition: transform 0.2s ease;
+    width: 100%;
 }
-.insta-btn:hover { transform: scale(1.02); }
+
+.join-btn {
+    background: var(--btn-bg);
+    border: 1px solid var(--border-color);
+    justify-content: center;
+}
+
+.insta-btn:hover, .join-btn:hover { transform: scale(1.02); }
+.join-btn:hover { border-color: var(--accent-glow); background-color: var(--btn-hover-bg); }
 .follow-tag { background: rgba(255, 255, 255, 0.2); font-size: 0.72rem; padding: 3px 8px; border-radius: 20px; text-transform: uppercase; }
 
 /* --- 11. Footer & WhatsApp Styling --- */
-.hub-footer { text-align: center; border-top: 1px solid var(--border-color); padding-top: 24px; }
+.hub-footer { text-align: center; border-top: 1px solid var(--border-color); padding-top: 24px; width: 100%; }
 .disclaimer { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 14px; }
 
 .wa-share-btn {
@@ -295,80 +343,30 @@ summary {
     padding: 10px 20px;
     border-radius: 20px;
     margin-bottom: 24px;
+    border: none;
+    cursor: pointer;
     transition: transform 0.2s ease, background-color 0.2s ease;
     box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2);
 }
 .wa-share-btn:hover { transform: scale(1.05); background-color: #20ba5a; }
 .tagline { font-size: 0.75rem; font-weight: 600; color: var(--accent-glow); text-transform: uppercase; letter-spacing: 0.5px; }
 
-/* --- 12. Floating Absolute Copyright Notice --- */
+/* --- 12. Fixed Footnote Absolute Copyright Notice --- */
 .site-copyright {
-    position: absolute;
+    position: fixed;
     bottom: 16px;
-    right: 20px;
+    right: 16px;
     font-size: 0.72rem;
     color: var(--text-muted);
-    opacity: 0.4;
-    font-weight: 500;
+    opacity: 0.5;
+    z-index: 1000;
+    pointer-events: none;
 }
 
-/* --- 13. Team Page 'Join Us' Button Layout --- */
-.join-team-section {
-    background: rgba(129, 140, 248, 0.03);
-    border: 1px dashed rgba(129, 140, 248, 0.2);
-    padding: 18px;
-    border-radius: 18px;
-    margin-bottom: 24px;
-    text-align: center;
-}
-
-.join-label {
-    font-size: 0.76rem;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    font-weight: 600;
-    margin-bottom: 10px;
-}
-
-.join-btn {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
-    color: white;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 0.9rem;
-    padding: 12px 18px;
-    border-radius: 12px;
-    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s ease;
-    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
-}
-
-.join-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.35);
-}
-
-.apply-tag {
-    background: rgba(255, 255, 255, 0.15);
-    font-size: 0.7rem;
-    padding: 3px 10px;
-    border-radius: 20px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
+/* --- 13. Aesthetic Responsive Mobile Overrides --- */
 @media (max-width: 520px) {
-    body { padding: 10px; }
-    .hub-card { padding: 30px 16px; }
+    body { padding: 12px; }
+    .hub-card { padding: 32px 16px; border-radius: 20px; }
     .site-copyright {
-        position: relative;
-        bottom: auto;
-        right: auto;
-        margin-top: 24px;
+        position: static;
         text-align: center;
-        padding-bottom: 10px;
-    }
-}
