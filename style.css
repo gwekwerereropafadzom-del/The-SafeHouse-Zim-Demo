@@ -1,0 +1,374 @@
+/* --- 1. Global System Constants & Theme Reset --- */
+:root {
+    --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+    --card-bg: rgba(30, 41, 59, 0.7);
+    --btn-bg: rgba(255, 255, 255, 0.04);
+    --btn-hover-bg: rgba(255, 255, 255, 0.08);
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --accent-glow: #818cf8;
+    --border-color: rgba(255, 255, 255, 0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg-gradient);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+/* --- 2. Centralized Layout Card --- */
+.hub-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    width: 100%;
+    max-width: 480px;
+    padding: 40px 24px;
+    border-radius: 24px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.hub-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+/* --- 3. Custom Logo & Side-by-Side Brand Layout --- */
+.brand-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.site-logo {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1.5px solid var(--border-color);
+}
+
+.brand-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    color: var(--text-main);
+}
+
+/* --- 4. Interconnected Navigation Bar --- */
+.top-nav {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 28px;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 8px;
+    border-radius: 14px;
+    border: 1px solid var(--border-color);
+}
+
+.nav-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+    color: var(--text-main);
+    background-color: var(--btn-bg);
+}
+
+.nav-link.active {
+    color: var(--text-main);
+    background-color: rgba(129, 140, 248, 0.2);
+    border: 1px solid rgba(129, 140, 248, 0.25);
+}
+
+/* --- 5. Content Elements --- */
+.badge {
+    display: inline-block;
+    background: rgba(129, 140, 248, 0.15);
+    color: var(--accent-glow);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    border: 1px solid rgba(129, 140, 248, 0.2);
+}
+
+h1 { font-size: 1.8rem; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 12px; }
+h2 { font-size: 1.15rem; font-weight: 700; margin-bottom: 16px; color: var(--text-main); text-align: left; }
+.subtitle { font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; }
+
+/* --- 6. Direct Buttons / Resource Cards --- */
+.links-container { display: flex; flex-direction: column; gap: 14px; margin-bottom: 28px; }
+
+.resource-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--btn-bg);
+    text-decoration: none;
+    padding: 18px 20px;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-content { display: flex; flex-direction: column; text-align: left; gap: 6px; padding-right: 12px; }
+.btn-title { font-weight: 600; font-size: 1rem; color: var(--text-main); }
+.btn-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; }
+.btn-arrow { font-size: 1.1rem; color: var(--text-muted); transition: transform 0.2s ease, color 0.2s ease; }
+
+.resource-btn:hover {
+    background-color: var(--btn-hover-bg);
+    border-color: rgba(129, 140, 248, 0.3);
+    transform: translateY(-2px);
+}
+.resource-btn:hover .btn-arrow { transform: translateX(4px); color: var(--accent-glow); }
+
+/* --- 7. Frequently Asked Questions Accordions --- */
+.faq-section {
+    margin-bottom: 28px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 24px;
+}
+
+.faq-item {
+    background: var(--btn-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    margin-bottom: 10px;
+    padding: 14px;
+    text-align: left;
+}
+
+.faq-item[open] {
+    background: rgba(255, 255, 255, 0.02);
+    border-color: rgba(129, 140, 248, 0.2);
+}
+
+summary {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-main);
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+}
+
+.faq-answer {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin-top: 10px;
+    padding-left: 4px;
+}
+
+/* --- 8. Team Showcase Layout with Pictures --- */
+.team-grid { display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px; }
+
+.team-member-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    border-radius: 16px;
+    text-align: left;
+}
+
+.team-member-card.placeholder { border-style: dashed; opacity: 0.5; }
+
+.member-profile-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+
+.member-photo {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1.5px solid var(--accent-glow);
+}
+
+.member-photo-placeholder {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--btn-bg);
+    border: 1px dashed var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.member-title-block h3 { font-size: 1.05rem; color: var(--text-main); }
+
+.member-role {
+    font-size: 0.75rem;
+    color: var(--accent-glow);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    margin-top: 2px;
+}
+
+.member-bio { font-size: 0.84rem; color: var(--text-muted); line-height: 1.4; }
+
+/* --- 9. About Page Narrative Block --- */
+.content-block {
+    text-align: left;
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid var(--border-color);
+    padding: 24px 20px;
+    border-radius: 16px;
+    margin-bottom: 24px;
+}
+
+.narrative-text { font-size: 0.88rem; line-height: 1.6; color: #cbd5e1; margin-bottom: 14px; }
+.narrative-text:last-child { margin-bottom: 0; }
+
+/* --- 10. Socials Instagram Feature Banner --- */
+.instagram-section {
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px dashed var(--border-color);
+    padding: 18px;
+    border-radius: 18px;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.insta-label { font-size: 0.76rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; margin-bottom: 10px; }
+
+.insta-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(45deg, #8a3ab9, #bc1888, #e95950);
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 12px 18px;
+    border-radius: 12px;
+    transition: transform 0.2s ease;
+}
+.insta-btn:hover { transform: scale(1.02); }
+.follow-tag { background: rgba(255, 255, 255, 0.2); font-size: 0.72rem; padding: 3px 8px; border-radius: 20px; text-transform: uppercase; }
+
+/* --- 11. Footer & WhatsApp Styling --- */
+.hub-footer { text-align: center; border-top: 1px solid var(--border-color); padding-top: 24px; }
+.disclaimer { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 14px; }
+
+.wa-share-btn {
+    display: inline-block;
+    background-color: #25d366;
+    color: white;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 10px 20px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2);
+}
+.wa-share-btn:hover { transform: scale(1.05); background-color: #20ba5a; }
+.tagline { font-size: 0.75rem; font-weight: 600; color: var(--accent-glow); text-transform: uppercase; letter-spacing: 0.5px; }
+
+/* --- 12. Floating Absolute Copyright Notice --- */
+.site-copyright {
+    position: absolute;
+    bottom: 16px;
+    right: 20px;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    opacity: 0.4;
+    font-weight: 500;
+}
+
+/* --- 13. Team Page 'Join Us' Button Layout --- */
+.join-team-section {
+    background: rgba(129, 140, 248, 0.03);
+    border: 1px dashed rgba(129, 140, 248, 0.2);
+    padding: 18px;
+    border-radius: 18px;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.join-label {
+    font-size: 0.76rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.join-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 12px 18px;
+    border-radius: 12px;
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s ease;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+}
+
+.join-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.35);
+}
+
+.apply-tag {
+    background: rgba(255, 255, 255, 0.15);
+    font-size: 0.7rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+@media (max-width: 520px) {
+    body { padding: 10px; }
+    .hub-card { padding: 30px 16px; }
+    .site-copyright {
+        position: relative;
+        bottom: auto;
+        right: auto;
+        margin-top: 24px;
+        text-align: center;
+        padding-bottom: 10px;
+    }
+}
